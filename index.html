@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uit Data Collection</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 2em;
+    }
+
+    .subheading {
+      font-size: 1.5em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      text-align: center;
+      margin: 20px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1em;
+      border: none;
+      cursor: pointer;
+      margin: 5px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Uit Data Collection</h1>
+    <h2 class="subheading">Click a button to view collected data</h2>
+  </div>
+
+  <div class="buttons">
+    <button onclick="showImages('Saturday')">Saturday</button>
+    <button onclick="showImages('Sunday')">Sunday</button>
+  </div>
+
+  <div class="image-container" id="imageContainer"></div>
+
+  <script>
+    const imageContainer = document.getElementById('imageContainer');
+    const subheading = document.querySelector('.subheading');
+
+    const showImages = (day) => {
+      // Clear previous images
+      imageContainer.innerHTML = '';
+
+      // Set subheading based on the selected day
+      subheading.textContent = `Data collected on ${day}`;
+
+      // Array of image URLs for Saturday and Sunday
+      const imageUrls = (day === 'Saturday') ?
+        ['saturday1.jpg', 'saturday2.jpg', 'saturday3.jpg', 'saturday4.jpg', 'saturday5.jpg', 'saturday6.jpg', 'saturday7.jpg'] :
+        ['sunday1.jpg', 'sunday2.jpg', 'sunday3.jpg', 'sunday4.jpg', 'sunday5.jpg', 'sunday6.jpg'];
+
+      // Create and append image elements to the container
+      imageUrls.forEach((imageUrl) => {
+        const imgElement = document.createElement('img');
+        imgElement.src = imageUrl;
+        imageContainer.appendChild(imgElement);
+      });
+    };
+  </script>
+</body>
+</html>
